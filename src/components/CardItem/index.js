@@ -1,28 +1,39 @@
 import React from 'react';
-import CardImage from '../../assets/placeholder-img.png'
+import CardImage from '../../assets/placeholder-img.png';
+import { FormatRupiah } from '../../utils/currency';
+import { capitalize } from 'lodash';
 import './styles.scss';
 
-const CardItem = (item, onClick) => {
+const CardItem = ({ item, onClick }) => {
   return (
     <div
       className='container'
       onClick={() => {
-        onClick(item.name);
+        onClick(item.id);
       }}
     >
       <div className='content'>
-        <img
-          src={CardImage}
-          alt={item.name}
-          height='120px'
-          width='120px'
-        />
+        <img src={CardImage} alt={item.name} height='120px' width='120px' />
       </div>
       <div className='desc'>
-        <p>{`Komoditas : ${item?.komoditas || ''}` || 'ikan'}</p>
-        <p>{`Ukuran : ${item?.size || 0}`|| '20'}</p>
-        <p>{`Harga : ${item?.price || 0}`|| '20'}</p>
-        <p>{`# ${item?.kota || ''}` || 'jakarta'}</p>
+        <p>
+          <b>Komoditas : </b>
+          {item?.komoditas || ''}
+        </p>
+        <p>
+          <b>Ukuran : </b>
+          {item?.size || 0}
+        </p>
+        <p>
+          <b>Harga : </b>
+          {item?.price ? FormatRupiah(item?.price, 'Rp ') : ''}
+        </p>
+      </div>
+      <div className='footer-desc '>
+        <p>
+          {`${(item?.areaKota && capitalize(item?.areaKota)) || ''}` ||
+            'jakarta'}
+        </p>
       </div>
     </div>
   );

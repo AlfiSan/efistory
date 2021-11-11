@@ -15,7 +15,7 @@ const List = (props) => {
     >
       {list &&
         list.map((item) => (
-          <Grid container item xs={2} sm={4} md={3}>
+          <Grid container item xs={2} sm={4} md={3} key={item.id}>
             <CardItem item={item} onClick={onClickCard} />
           </Grid>
         ))}
