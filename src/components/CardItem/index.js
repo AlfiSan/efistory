@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles.scss';
 import CardImage from '../../assets/placeholder-img.png'
+import './styles.scss';
 
 const CardItem = (item, onClick) => {
   return (

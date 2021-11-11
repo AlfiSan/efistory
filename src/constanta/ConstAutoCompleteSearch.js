@@ -1,0 +1,1 @@
+export const ConstAutoCompleteSearch = ['Ikan Gabus', 'Ikan Mas', 'Ikan Nila', 'Ikan Sepat']

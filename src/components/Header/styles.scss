@@ -1,0 +1,10 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixin.scss';
+
+
+.header {
+  @include box-col($align: center, $justify: center);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 2rem;
+}

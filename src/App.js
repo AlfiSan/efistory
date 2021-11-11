@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Grid from '@mui/material/Grid';
 import List from './components/List';
+import Header from './components/Header'
 
 const dummyList = [
   { id: 1, komoditas: 'ikan laut', size: '30', kota: 'jakarta' },
@@ -13,9 +14,13 @@ const dummyList = [
 ];
 
 function App() {
+
+  const [search, setSearch] = useState('');
+
   return (
     <div className='layer'>
       <Grid container justify='center'>
+        <Header search={search} setSearch={setSearch} />
         <List list={dummyList} onClickCard={(item) => console.log(item)} />
       </Grid>
     </div>
