@@ -1,0 +1,32 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixin.scss';
+
+
+.container {
+  @include box-col();
+  background-color: $white;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  
+  .content {
+    @include box-col($align: center, $justify: center);
+    align-self: center;
+  
+    .img {
+      align-self: center;
+    }
+  }
+
+  .desc {
+    margin-top: 0.5em; 
+    padding-left: 10pt;
+    padding-right: 10pt;
+  
+    p {
+      @include text(medium)
+    }
+  }
+}
+
