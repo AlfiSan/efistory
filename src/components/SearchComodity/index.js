@@ -4,11 +4,11 @@ import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import { ConstAutoCompleteSearch } from '../../constanta/ConstAutoCompleteSearch';
 
-const SearchComodity = ({search, setSearch}) => {
+const SearchComodity = ({search, setSearch, onSearch}) => {
 
-  const handleChange = (event) => {
-    console.log(event.target.value)
+  const handleChange = async (event) => {
     setSearch(event.target.value);
+    onSearch(event.target.value)
   };
 
   return (

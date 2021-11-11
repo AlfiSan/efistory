@@ -8,7 +8,7 @@ export const getData = async (params) => {
     let response = await ApiClient({
       method: 'GET',
       url: Endpoint.GET_LIST,
-      data: params,
+      params,
     });
 
     const data = await response.map((item, index) => ({
