@@ -4,35 +4,39 @@ import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import { ConstAutoCompleteSearch } from '../../constanta/ConstAutoCompleteSearch';
 
-const SearchComodity = ({search, setSearch, onSearch}) => {
-
+const SearchComodity = ({ search, setSearch, onSearch }) => {
   const handleChange = async (event) => {
     setSearch(event.target.value);
-    onSearch(event.target.value)
+    onSearch(event.target.value);
+  };
+
+  const handleClickTag = async (event) => {
+    setSearch(event.target.textContent);
+    onSearch(event.target.textContent);
   };
 
   return (
     <Stack spacing={2} sx={{ width: 400 }}>
       <Autocomplete
         freeSolo
-        id="search komoditas"
+        id='search komoditas'
         disableClearable
         options={ConstAutoCompleteSearch.map((name) => name)}
+        onChange={handleClickTag}
+        onInputChange={handleChange}
         renderInput={(params) => (
           <TextField
-          {...params}
-          onChange={handleChange}
-          value={search}
-          label="Cari komoditas"
-          InputProps={{
-            ...params.InputProps,
-            type: 'search',
-          }}
+            {...params}
+            label='Cari komoditas'
+            InputProps={{
+              ...params.InputProps,
+              type: 'search',
+            }}
           />
         )}
       />
     </Stack>
   );
-}
+};
 
-export default SearchComodity
+export default SearchComodity;
