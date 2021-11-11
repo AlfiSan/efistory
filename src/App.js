@@ -1,28 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
+import pages from './pages';
+import { ROUTES } from './helpers';
 import './App.scss';
-import Grid from '@mui/material/Grid';
-import List from './components/List';
-import Header from './components/Header'
-
-const dummyList = [
-  { id: 1, komoditas: 'ikan laut', size: '30', kota: 'jakarta' },
-  { id: 2, komoditas: 'ikan laut', size: '30', kota: 'jakarta' },
-  { id: 3, komoditas: 'ikan tawar', size: '20', kota: 'jakarta' },
-  { id: 4, komoditas: 'ikan laut', size: '30', kota: 'bandung' },
-  { id: 5, komoditas: 'teri', size: '32', kota: 'medan' },
-  { id: 6, komoditas: 'ikan laut', size: '34', kota: 'jogja' },
-];
 
 function App() {
-
-  const [search, setSearch] = useState('');
-
   return (
     <div className='layer'>
-      <Grid container justify='center'>
-        <Header search={search} setSearch={setSearch} />
-        <List list={dummyList} onClickCard={(item) => console.log(item)} />
-      </Grid>
+      <CssBaseline />
+      <BrowserRouter>
+        <Routes>
+          <Route path={ROUTES.HOME} element={pages.Home} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
