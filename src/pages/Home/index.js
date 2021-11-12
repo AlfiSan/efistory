@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
-import List from '../../components/List';
-import Header from '../../components/Header';
+import { List, Header, EmptyView } from '../../components';
 import { getData } from '../../helpers/actions';
+import './styles.scss';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -42,6 +42,12 @@ const Home = () => {
   return (
     <Grid container justify='center'>
       <Header search={search} setSearch={setSearch} onSearch={onSubmitSearch} />
+      {!loading && data.length === 0 && (
+        <EmptyView
+          title='Data tidak ditemukan'
+          desc='Data yang anda inginkan tidak ada atau belum tersedia saat ini'
+        />
+      )}
       <List
         list={data}
         loading={loading}

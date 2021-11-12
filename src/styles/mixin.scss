@@ -13,10 +13,6 @@
   align-items: $align;
 }
 
-@mixin box-shadow {
-  background-color: green;
-}
-
 @mixin responsive-text {
   @media all and (max-device-width: 720px){
   h1 {

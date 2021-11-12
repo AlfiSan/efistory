@@ -1,0 +1,6 @@
+@import '../../styles/mixin.scss';
+
+.container-home {
+  @include box-col($align: flex-start, $justify: center);
+}
+
