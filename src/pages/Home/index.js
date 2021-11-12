@@ -152,7 +152,6 @@ const Home = () => {
       <List
         list={data}
         loading={loading}
-        onClickCard={(item) => console.log(item)}
       />
       <ModalFilter
         isVisible={showModalFilter}

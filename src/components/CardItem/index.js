@@ -5,14 +5,9 @@ import { FormatRupiah } from '../../utils/currency';
 import { capitalize } from 'lodash';
 import './styles.scss';
 
-const CardItem = ({ item, onClick, loading }) => {
+const CardItem = ({ item, loading }) => {
   return (
-    <div
-      className='container'
-      onClick={() => {
-        onClick(item.id);
-      }}
-    >
+    <div className='container-card'>
       {loading ? (
         <Skeleton
           animation='wave'
@@ -60,7 +55,7 @@ const CardItem = ({ item, onClick, loading }) => {
           height={40}
         />
       ) : (
-        <div className='footer-desc '>
+        <div className='footer-card '>
           <p>
             {`${(item?.areaKota && capitalize(item?.areaKota)) || ''}` ||
               'jakarta'}

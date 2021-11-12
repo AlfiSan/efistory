@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import CardItem from '../CardItem';
 
 const List = (props) => {
-  const { list, onClickCard, loading } = props;
+  const { list, loading } = props;
 
   return (
     <Grid
@@ -17,7 +17,7 @@ const List = (props) => {
         ? list &&
           list.map((item) => (
             <Grid container item xs={2} sm={4} md={3} key={item.id}>
-              <CardItem item={item} onClick={onClickCard} loading={loading} />
+              <CardItem item={item} loading={loading} />
             </Grid>
           ))
         : Array.apply(0, Array(12)).map(function (x, i) {

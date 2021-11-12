@@ -42,6 +42,7 @@ const ModalFilter = ({
       >
         <Box sx={styles.box}>
           <h2>Filter</h2>
+          <br/>
           <p>Pilih Lokasi</p>
           <FormControl fullWidth>
             <InputLabel id='city-label'>Kota</InputLabel>
@@ -60,7 +61,7 @@ const ModalFilter = ({
                 ))}
             </Select>
           </FormControl>
-          <br />
+          <br/><br/>
           <p>Pilih Ukuran</p>
           <FormControl fullWidth>
             <InputLabel id='size-label'>Ukuran</InputLabel>

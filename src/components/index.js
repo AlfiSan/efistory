@@ -6,4 +6,12 @@ import SearchComodity from './SearchComodity';
 import ModalFilter from './ModalFilter';
 import ModalAdd from './ModalAdd';
 
-export { CardItem, EmptyView, Header, List, SearchComodity, ModalFilter, ModalAdd};
+export {
+  CardItem,
+  EmptyView,
+  Header,
+  List,
+  SearchComodity,
+  ModalFilter,
+  ModalAdd,
+};
