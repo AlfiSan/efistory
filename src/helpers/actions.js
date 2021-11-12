@@ -57,3 +57,18 @@ export const getSize = async () => {
     return [];
   }
 };
+
+export const addData = async (params) => {
+  try {
+    let response = await ApiClient({
+      method: 'POST',
+      url: Endpoint.ADD_DATA,
+      data: params,
+    })
+
+    return toCamelCase(response);
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
