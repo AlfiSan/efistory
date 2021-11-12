@@ -1,8 +1,10 @@
 
-@mixin box-row($direction: flex-start) {
+@mixin box-row($align: center, $justify: center) {
   display: flex;
+  flex: 1;
   flex-direction: row;
-  justify-content: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 @mixin box-col($align: flex-start, $justify: flex-start) {

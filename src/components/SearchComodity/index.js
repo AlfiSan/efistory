@@ -16,7 +16,7 @@ const SearchComodity = ({ search, setSearch, onSearch }) => {
   };
 
   return (
-    <Stack spacing={2} sx={{ width: 400 }}>
+    <Stack spacing={2} sx={{ width: '80%' }}>
       <Autocomplete
         freeSolo
         id='search komoditas'

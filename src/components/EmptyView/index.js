@@ -4,7 +4,7 @@ import './styles.scss';
 
 const EmptyView = ({ title, desc }) => {
   return (
-    <Grid container justify='center' width={'100%'} xs={{flex: 1, alignItems: 'center'}}>
+    <Grid container justify='center'>
     <div className='container-empty'>
       <div className='content-empty'>
         <h3>{title}</h3>
