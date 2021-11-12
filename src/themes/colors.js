@@ -1,0 +1,9 @@
+const colors = {
+  green: '#16a085',
+  orange: '#f39c12',
+  white: '#ffffff',
+  black: '#000000',
+  cloud: '#dfe4ea'
+}
+
+export default colors

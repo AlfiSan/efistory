@@ -1,7 +1,6 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
+import { Stack, Autocomplete } from '@mui/material/';
 import { ConstAutoCompleteSearch } from '../../constanta/ConstAutoCompleteSearch';
 
 const SearchComodity = ({ search, setSearch, onSearch }) => {
@@ -16,7 +15,7 @@ const SearchComodity = ({ search, setSearch, onSearch }) => {
   };
 
   return (
-    <Stack spacing={2} sx={{ width: '80%' }}>
+    <Stack spacing={2} sx={{ width: 400 }}>
       <Autocomplete
         freeSolo
         id='search komoditas'

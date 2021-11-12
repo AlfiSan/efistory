@@ -1,7 +1,7 @@
 import Endpoint from './endpoint';
 import toCamelCase from '../utils/caseConverter';
 import ApiClient from './apiClient';
-import uniq from 'lodash/uniq';
+import { capitalize, uniq } from 'lodash';
 
 export const getData = async (params) => {
   try {
@@ -23,23 +23,21 @@ export const getData = async (params) => {
   }
 };
 
-export const getArea = async () => {
+export const getCity = async () => {
   try {
     let response = await ApiClient({
       method: 'GET',
       url: Endpoint.GET_AREA,
     });
 
-    const province = uniq(response.map((item) => item.province)).map(
+    const dataCity = uniq(response.map((item) => item.city)).map(
       (i) => ({
-        key: i,
+        label: capitalize(i),
         value: i,
       })
     );
 
-    const list = response.data;
-
-    return { province, list };
+    return dataCity;
   } catch (e) {
     console.error(e);
     return { province: [], list: [] };
@@ -53,11 +51,7 @@ export const getSize = async () => {
       url: Endpoint.GET_SIZE,
     });
 
-    const size = response.map((item) => ({
-      ...item,
-    }));
-
-    return size;
+    return response;
   } catch (e) {
     console.error(e);
     return [];

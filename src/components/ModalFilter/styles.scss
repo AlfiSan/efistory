@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+
+
+.modal-container {
+  @include box-col($align: flex-start, $justify: flex-start);
+
+    p {
+      margin-top: 1rem;
+      @include text(medium);
+    }
+    .footer-modal {
+      @include box-row($align: flex-end, $justify: space-between);
+      margin-top: 1rem;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      padding: 1rem;
+
+    }
+}
