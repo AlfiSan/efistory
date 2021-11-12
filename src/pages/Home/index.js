@@ -10,6 +10,9 @@ import {
 } from '../../components';
 import { getData, addData } from '../../helpers/actions';
 import { useGetCity, useGetSize } from '../../hooks';
+import { v4 as uuidv4 } from 'uuid'
+import moment from "moment";
+
 
 import './styles.scss';
 
@@ -26,6 +29,7 @@ const Home = () => {
   const [hasFilter, setHasFilter] = useState(false);
   const [showModalAdd, setShowModalAdd] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     fetchData();
@@ -105,7 +109,11 @@ const Home = () => {
   const postAddData = async (params) => {
     try {
       const response = await addData(params);
-      if (response?.data.error) {
+      if (response?.data?.error) {
+        setMessage('Terjadi kesalahan pada server')
+        setShowSnackbar(true);
+      } else {
+        setMessage(`${response?.updatedRange}, data berhasil ditambahkan`)
         setShowSnackbar(true);
       }
     } catch (e) {
@@ -117,12 +125,14 @@ const Home = () => {
   const handleSubmitAdd = async (params) => {
     let postData = [];
     let data = {
+      uuid: uuidv4(),
       komoditas: params?.Komoditas,
       price: params?.Harga,
       area_provinsi: params?.Provinsi?.value,
       area_kota: params?.Kota?.value,
       size: params?.Ukuran?.value,
       tgl_parsed: params?.Tanggal,
+      timestamp: moment().unix(),
     };
 
     postData.push(data);
@@ -182,7 +192,7 @@ const Home = () => {
         open={showSnackbar}
         autoHideDuration={6000}
         onClose={() => setShowSnackbar(false)}
-        message='Terjadi kesalahan pada server'
+        message={message}
       />
     </Grid>
   );
