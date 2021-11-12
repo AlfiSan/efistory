@@ -65,6 +65,7 @@ const Home = () => {
   };
 
   const openModalAdd = async () => {
+    setSearch('')
     setShowModalAdd(true);
   };
 
@@ -104,7 +105,7 @@ const Home = () => {
   const postAddData = async (params) => {
     try {
       const response = await addData(params);
-      if (response?.data?.satus === 400) {
+      if (response?.data.error) {
         setShowSnackbar(true);
       }
     } catch (e) {
@@ -128,7 +129,7 @@ const Home = () => {
 
     await postAddData(postData);
 
-    // closeModalAdd();
+    closeModalAdd();
     await fetchData();
   };
 
