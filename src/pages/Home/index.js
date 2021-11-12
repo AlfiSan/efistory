@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Fab } from '@mui/material';
+import { Grid, Fab, Snackbar } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import {
   List,
@@ -10,6 +10,7 @@ import {
 } from '../../components';
 import { getData, addData } from '../../helpers/actions';
 import { useGetCity, useGetSize } from '../../hooks';
+
 import './styles.scss';
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
   const [size, setSize] = useState('');
   const [hasFilter, setHasFilter] = useState(false);
   const [showModalAdd, setShowModalAdd] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -99,23 +101,35 @@ const Home = () => {
     }
   };
 
+  const postAddData = async (params) => {
+    try {
+      const response = await addData(params);
+      if (response?.data?.satus === 400) {
+        setShowSnackbar(true);
+      }
+    } catch (e) {
+      console.log('error: ', e);
+      setShowSnackbar(true);
+    }
+  };
+
   const handleSubmitAdd = async (params) => {
-    let postData = []
+    let postData = [];
     let data = {
       komoditas: params?.Komoditas,
       price: params?.Harga,
       area_provinsi: params?.Provinsi?.value,
       area_kota: params?.Kota?.value,
       size: params?.Ukuran?.value,
-      tgl_parsed: params?.Tanggal 
+      tgl_parsed: params?.Tanggal,
     };
 
-    postData.push(data)
+    postData.push(data);
 
-    await addData(postData)
-    
-    closeModalAdd();
-    await fetchData()
+    await postAddData(postData);
+
+    // closeModalAdd();
+    await fetchData();
   };
 
   return (
@@ -156,9 +170,20 @@ const Home = () => {
         handleClose={closeModalAdd}
         handleSubmit={handleSubmitAdd}
       />
-      <Fab color='secondary' aria-label='add' sx={fabStyle} onClick={() => openModalAdd()}>
+      <Fab
+        color='secondary'
+        aria-label='add'
+        sx={fabStyle}
+        onClick={() => openModalAdd()}
+      >
         <AddIcon />
       </Fab>
+      <Snackbar
+        open={showSnackbar}
+        autoHideDuration={6000}
+        onClose={() => setShowSnackbar(false)}
+        message='Terjadi kesalahan pada server'
+      />
     </Grid>
   );
 };
